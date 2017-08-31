@@ -55,30 +55,4 @@ public class AlbumsComparators {
         };
     }
 
-    private static Comparator<Album> getNameComparator(Comparator<Album> base) {
-        return (a1, a2) -> {
-            int res = base.compare(a1, a2);
-            if (res == 0)
-                return a1.getName().toLowerCase().compareTo(a2.getName().toLowerCase());
-            return res;
-        };
-    }
-
-    private static Comparator<Album> getSizeComparator(Comparator<Album> base) {
-        return (a1, a2) -> {
-            int res = base.compare(a1, a2);
-            if (res == 0)
-                return a1.getCount() - a2.getCount();
-            return res;
-        };
-    }
-
-    private static Comparator<Album> getNumericComparator(Comparator<Album> base) {
-        return (a1, a2) -> {
-            int res = base.compare(a1, a2);
-            if (res == 0)
-                return NumericComparator.filevercmp(a1.getName().toLowerCase(), a2.getName().toLowerCase());
-            return res;
-        };
-    }
 }

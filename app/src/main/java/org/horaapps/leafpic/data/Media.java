@@ -123,10 +123,6 @@ public class Media implements CursorHandler, Parcelable {
         return path != null ? path : getUri().getEncodedPath();
     }
 
-    public String getName() {
-        return StringUtils.getPhotoNameByPath(path);
-    }
-
     public long getSize() {
         return size;
     }

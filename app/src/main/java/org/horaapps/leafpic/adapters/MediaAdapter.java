@@ -201,7 +201,6 @@ public class MediaAdapter extends ThemedAdapter<MediaAdapter.ViewHolder> {
         if(f.isVideo()) {
             holder.icon.setVisibility(View.VISIBLE);
             holder.path.setVisibility(View.VISIBLE);
-            holder.path.setText(f.getName());
             /*holder.path.setTextColor(ContextCompat.getColor(holder.path.getContext(), R.color.md_dark_primary_text));
             holder.path.setBackgroundColor(
                     ColorPalette.getTransparentColor(

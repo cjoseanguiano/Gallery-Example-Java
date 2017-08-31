@@ -111,40 +111,6 @@ public class AlbumsAdapter extends ThemedAdapter<AlbumsAdapter.ViewHolder> {
         return selectedCount;
     }
 
-    public void removeSelectedAlbums(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-            albums.removeIf(Album::isSelected);
-        else {
-            Iterator<Album> iter = albums.iterator();
-
-            while (iter.hasNext()) {
-                Album album = iter.next();
-
-                if (album.isSelected())
-                    iter.remove();
-            }
-        }
-        selectedCount = 0;
-        notifyDataSetChanged();
-    }
-
-    public void removeAlbumsThatStartsWith(String path){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-            albums.removeIf(album -> album.getPath().startsWith(path));
-        else {
-            Iterator<Album> iter = albums.iterator();
-
-            while (iter.hasNext()) {
-                Album album = iter.next();
-
-                if (album.getPath().startsWith(path))
-                    iter.remove();
-            }
-        }
-
-        notifyDataSetChanged();
-    }
-
     public void clearSelected() {
         for (int i = 0; i < albums.size(); i++)
             if (albums.get(i).setSelected(false))
@@ -152,11 +118,7 @@ public class AlbumsAdapter extends ThemedAdapter<AlbumsAdapter.ViewHolder> {
         selectedCount = 0;
         onChangeSelectedSubject.onNext(Album.getEmptyAlbum());
     }
-
-    public void forceSelectedCount(int count) {
-        selectedCount = count;
-    }
-
+    
     @Override
     public void refreshTheme(ThemeHelper theme) {
         placeholder = theme.getPlaceHolder();

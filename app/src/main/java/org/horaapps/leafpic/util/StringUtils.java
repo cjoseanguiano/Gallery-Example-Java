@@ -37,12 +37,6 @@ public class StringUtils {
         return mime.split("/")[0] + "/*";
     }
 
-    public static String getPhotoNameByPath(String path) {
-        String b[] = path.split("/");
-        String fi = b[b.length - 1];
-        return fi.substring(0, fi.lastIndexOf('.'));
-    }
-
     public static String join(String jointChar, Object... collection) {
         String s = "";
         for (Object o : collection) s += o.toString() + jointChar;
@@ -116,11 +110,13 @@ public class StringUtils {
         c = c.substring(0, c.length() - 1);
         return c;
     }
+/*
 
     public static void showToast(Context x, String s) {
         Toast t = Toast.makeText(x, s, Toast.LENGTH_SHORT);
         t.show();
     }
+*/
 
     public static String humanReadableByteCount(long bytes, boolean si) {
         int unit = si ? 1000 : 1024;

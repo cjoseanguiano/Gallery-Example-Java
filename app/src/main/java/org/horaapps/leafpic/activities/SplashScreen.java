@@ -77,7 +77,7 @@ public class SplashScreen extends SharedMediaActivity {
                             // TODO: 4/10/17 handle
                             start();
                         }
-                    } else StringUtils.showToast(getApplicationContext(), "Album not found");
+                    }
                 } else  // default intent
                     start();
 

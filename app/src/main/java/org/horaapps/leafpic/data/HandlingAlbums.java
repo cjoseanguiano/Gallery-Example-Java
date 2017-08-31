@@ -163,19 +163,6 @@ public class HandlingAlbums extends SQLiteOpenHelper {
         values.put(ALBUM_COVER_PATH, mediaPath);
         setValue(path, values);
     }
-
-    void setSortingMode(String path, int column) {
-        ContentValues values = new ContentValues();
-        values.put(ALBUM_SORTING_MODE, column);
-        setValue(path, values);
-    }
-
-    void setSortingOrder(String path, int sortingOrder) {
-        ContentValues values = new ContentValues();
-        values.put(ALBUM_SORTING_ORDER, sortingOrder);
-        setValue(path, values);
-    }
-
     private void setValue(String path, ContentValues values) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.update(TABLE_ALBUMS, values, ALBUM_PATH+"=?", new String[]{ path });

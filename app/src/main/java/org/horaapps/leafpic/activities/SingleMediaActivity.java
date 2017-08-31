@@ -330,8 +330,7 @@ public class SingleMediaActivity extends SharedMediaActivity {
                         } catch (Exception e) {
                             Log.e("ERROS - uCrop", imageUri.toString(), e);
                         }
-                    } else
-                        StringUtils.showToast(getApplicationContext(), "errori random");
+                    }
                     break;
                 default:
                     super.onActivityResult(requestCode, resultCode, data);
@@ -522,29 +521,6 @@ public class SingleMediaActivity extends SharedMediaActivity {
 
                 return true;
 */
-            case R.id.action_rename:
-                final EditText editTextNewName = new EditText(getApplicationContext());
-                editTextNewName.setText(StringUtils.getPhotoNameByPath(getCurrentMedia().getPath()));
-
-                AlertDialog renameDialog = AlertDialogsHelper.getInsertTextDialog(this, editTextNewName, R.string.rename_photo_action);
-
-                renameDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok_action).toUpperCase(), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (editTextNewName.length() != 0) {
-                            Media currentMedia = getCurrentMedia();
-                            boolean b = MediaHelper.renameMedia(getApplicationContext(), currentMedia, editTextNewName.getText().toString());
-                            if (!b) {
-                                StringUtils.showToast(getApplicationContext(), getString(R.string.rename_error));
-                                //adapter.notifyDataSetChanged();
-                            }
-                        } else
-                            StringUtils.showToast(getApplicationContext(), getString(R.string.nothing_changed));
-                    }
-                });
-                renameDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel).toUpperCase(), (dialog, which) -> dialog.dismiss());
-                renameDialog.show();
-                break;
 
             case R.id.action_edit_with:
                 Intent editIntent = new Intent(Intent.ACTION_EDIT);
