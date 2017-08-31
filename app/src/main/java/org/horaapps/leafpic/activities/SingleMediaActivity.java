@@ -38,21 +38,16 @@ import com.orhanobut.hawk.Hawk;
 import com.yalantis.ucrop.UCrop;
 
 import org.horaapps.leafpic.R;
-import org.horaapps.leafpic.SelectAlbumBuilder;
 import org.horaapps.leafpic.activities.base.SharedMediaActivity;
 import org.horaapps.leafpic.adapters.MediaPagerAdapter;
-import org.horaapps.leafpic.animations.DepthPageTransformer;
 import org.horaapps.leafpic.data.Album;
 import org.horaapps.leafpic.data.AlbumSettings;
 import org.horaapps.leafpic.data.Media;
 import org.horaapps.leafpic.data.MediaHelper;
 import org.horaapps.leafpic.data.StorageHelper;
-import org.horaapps.leafpic.data.sort.SortingMode;
-import org.horaapps.leafpic.data.sort.SortingOrder;
 import org.horaapps.leafpic.fragments.ImageFragment;
 import org.horaapps.leafpic.util.AlertDialogsHelper;
 import org.horaapps.leafpic.util.Measure;
-import org.horaapps.leafpic.util.Security;
 import org.horaapps.leafpic.util.StringUtils;
 import org.horaapps.leafpic.views.HackyViewPager;
 
@@ -175,7 +170,6 @@ public class SingleMediaActivity extends SharedMediaActivity {
 
         mViewPager.setAdapter(adapter);
         mViewPager.setCurrentItem(position);
-        mViewPager.setPageTransformer(true, new DepthPageTransformer());
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -393,7 +387,7 @@ public class SingleMediaActivity extends SharedMediaActivity {
                 break;
 
 
-            case R.id.action_copy:
+           /* case R.id.action_copy:
                 SelectAlbumBuilder.with(getSupportFragmentManager())
                         .title(getString(R.string.copy_to))
                         .onFolderSelected(path -> {
@@ -403,9 +397,9 @@ public class SingleMediaActivity extends SharedMediaActivity {
                             if (!b)
                                 Toast.makeText(getApplicationContext(), R.string.copy_error, Toast.LENGTH_SHORT).show();
                         }).show();
-                break;
+                break;*/
 
-            case R.id.name_sort_mode:
+   /*         case R.id.name_sort_mode:
                 this.album.setDefaultSortingMode(getApplicationContext(), SortingMode.NAME);
                 this.album.sortPhotos();
                 adapter.swapDataSet(media);
@@ -447,7 +441,7 @@ public class SingleMediaActivity extends SharedMediaActivity {
 
                 item.setChecked(!item.isChecked());
                 return true;
-
+*/
 
             case R.id.action_share:
                 Intent share = new Intent(Intent.ACTION_SEND);
@@ -463,13 +457,6 @@ public class SingleMediaActivity extends SharedMediaActivity {
                 uCrop.withOptions(getUcropOptions());
                 uCrop.start(SingleMediaActivity.this);
                 break;
-
-            case R.id.action_use_as:
-                Intent intent = new Intent(Intent.ACTION_ATTACH_DATA);
-                intent.setDataAndType(
-                        getCurrentMedia().getUri(), getCurrentMedia().getMimeType());
-                startActivity(Intent.createChooser(intent, getString(R.string.use_as)));
-                return true;
 
             case R.id.action_open_with:
                 Intent intentopenWith = new Intent(Intent.ACTION_VIEW);
@@ -488,7 +475,8 @@ public class SingleMediaActivity extends SharedMediaActivity {
                 });
                 textDialog.setButton(DialogInterface.BUTTON_POSITIVE, this.getString(R.string.delete).toUpperCase(), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        if (Security.isPasswordOnDelete(getApplicationContext())) {
+                        Log.i(TAG, "onClick: ");
+                        /*if (Security.isPasswordOnDelete(getApplicationContext())) {
 
                             Security.askPassword(SingleMediaActivity.this, new Security.PasswordInterface() {
                                 @Override
@@ -502,13 +490,13 @@ public class SingleMediaActivity extends SharedMediaActivity {
                                 }
                             });
                         } else
-                            deleteCurrentMedia();
+                            deleteCurrentMedia();*/
                     }
                 });
                 textDialog.show();
                 return true;
 
-            case R.id.action_move:
+       /*     case R.id.action_move:
                 SelectAlbumBuilder.with(getSupportFragmentManager())
                         .title(getString(R.string.move_to))
                         .exploreMode(true)
@@ -533,7 +521,7 @@ public class SingleMediaActivity extends SharedMediaActivity {
                         }).show();
 
                 return true;
-
+*/
             case R.id.action_rename:
                 final EditText editTextNewName = new EditText(getApplicationContext());
                 editTextNewName.setText(StringUtils.getPhotoNameByPath(getCurrentMedia().getPath()));
@@ -565,7 +553,7 @@ public class SingleMediaActivity extends SharedMediaActivity {
                 startActivity(Intent.createChooser(editIntent, getString(R.string.edit_with)));
                 break;
 
-            case R.id.action_details:
+/*            case R.id.action_details:
 
                 final AlertDialog detailsDialog = AlertDialogsHelper.getDetailsDialog(this, getCurrentMedia());
 
@@ -579,18 +567,18 @@ public class SingleMediaActivity extends SharedMediaActivity {
                 });
 
                 detailsDialog.show();
-                break;
-
+                break;*/
+/*
             case R.id.action_settings:
                 startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
-                break;
+                break;*/
 
-            case R.id.action_palette:
+         /*   case R.id.action_palette:
                 Intent paletteIntent = new Intent(getApplicationContext(), PaletteActivity.class);
                 paletteIntent.setData(getCurrentMedia().getUri());
                 startActivity(paletteIntent);
                 break;
-
+*/
             case R.id.slide_show:
                 isSlideShowOn = !isSlideShowOn;
                 if (isSlideShowOn) handler.postDelayed(slideShowRunnable, SLIDE_SHOW_INTERVAL);

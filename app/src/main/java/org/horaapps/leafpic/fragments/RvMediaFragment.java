@@ -23,7 +23,6 @@ import com.orhanobut.hawk.Hawk;
 
 import org.horaapps.leafpic.R;
 import org.horaapps.leafpic.activities.MainActivity;
-import org.horaapps.leafpic.activities.PaletteActivity;
 import org.horaapps.leafpic.activities.SingleMediaActivity;
 import org.horaapps.leafpic.adapters.MediaAdapter;
 import org.horaapps.leafpic.data.Album;
@@ -318,11 +317,11 @@ public class RvMediaFragment extends BaseFragment {
                 adapter.clearSelected();
                 return true;
 
-            case R.id.action_palette:
+            /*case R.id.action_palette:
                 Intent paletteIntent = new Intent(act, PaletteActivity.class);
                 paletteIntent.putExtra("imageUri", adapter.getFirstSelected().getUri().toString());
                 startActivity(paletteIntent);
-                return true;
+                return true;*/
 
             case R.id.select_all:
                 if (adapter.getSelectedCount() == adapter.getItemCount())

@@ -23,7 +23,6 @@ import com.mikepenz.iconics.view.IconicsImageView;
 import com.orhanobut.hawk.Hawk;
 
 import org.horaapps.leafpic.R;
-import org.horaapps.leafpic.SelectAlbumBuilder;
 import org.horaapps.leafpic.activities.base.SharedMediaActivity;
 import org.horaapps.leafpic.data.HandlingAlbums;
 import org.horaapps.leafpic.data.filter.ImageFileFilter;
@@ -127,7 +126,7 @@ public class BlackWhiteListActivity extends SharedMediaActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_add:
+           /* case R.id.action_add:
                 SelectAlbumBuilder.with(getSupportFragmentManager())
                         .title(getString(R.string.chose_folders))
                         .exploreMode(true)
@@ -138,7 +137,7 @@ public class BlackWhiteListActivity extends SharedMediaActivity {
                                 addFolder(new File(path));
                             }
                         }).show();
-                return true;
+                return true;*/
             case R.id.action_toggle:
                 loadFolders(isExcludedMode() ? HandlingAlbums.INCLUDED : HandlingAlbums.EXCLUDED);
                 return true;

@@ -43,7 +43,6 @@ import com.orhanobut.hawk.Hawk;
 
 import org.horaapps.leafpic.BuildConfig;
 import org.horaapps.leafpic.R;
-import org.horaapps.leafpic.SelectAlbumBuilder;
 import org.horaapps.leafpic.activities.base.SharedMediaActivity;
 import org.horaapps.leafpic.data.Album;
 import org.horaapps.leafpic.data.Media;
@@ -53,7 +52,6 @@ import org.horaapps.leafpic.fragments.BaseFragment;
 import org.horaapps.leafpic.fragments.RvMediaFragment;
 import org.horaapps.leafpic.util.Affix;
 import org.horaapps.leafpic.util.AlertDialogsHelper;
-import org.horaapps.leafpic.util.Security;
 import org.horaapps.leafpic.util.StringUtils;
 
 import java.util.ArrayList;
@@ -194,26 +192,26 @@ public class MainActivity extends SharedMediaActivity {
         drawerToggle.syncState();
 
 
-        findViewById(R.id.ll_drawer_Donate).setOnClickListener(new View.OnClickListener() {
+     /*   findViewById(R.id.ll_drawer_Donate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, DonateActivity.class));
             }
-        });
+        });*/
 
-        findViewById(R.id.ll_drawer_Setting).setOnClickListener(new View.OnClickListener() {
+  /*      findViewById(R.id.ll_drawer_Setting).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             }
         });
-
-        findViewById(R.id.ll_drawer_About).setOnClickListener(new View.OnClickListener() {
+*/
+/*        findViewById(R.id.ll_drawer_About).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, AboutActivity.class));
             }
-        });
+        });*/
 
         findViewById(R.id.ll_drawer_Default).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -228,7 +226,7 @@ public class MainActivity extends SharedMediaActivity {
             displayMedia(Album.getAllMediaAlbum());
         });
 
-        findViewById(R.id.ll_drawer_hidden).setOnClickListener(new View.OnClickListener() {
+/*        findViewById(R.id.ll_drawer_hidden).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -251,14 +249,14 @@ public class MainActivity extends SharedMediaActivity {
                     displayAlbums(true);
                 }
             }
-        });
+        });*/
 
-        findViewById(R.id.ll_drawer_Wallpapers).setOnClickListener(new View.OnClickListener() {
+/*        findViewById(R.id.ll_drawer_Wallpapers).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "Coming Soon!", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
         /**** FAB ***/
         fab.setImageDrawable(new IconicsDrawable(this).icon(GoogleMaterial.Icon.gmd_camera_alt).color(Color.WHITE));
@@ -392,9 +390,9 @@ public class MainActivity extends SharedMediaActivity {
 
         switch (item.getItemId()) {
 
-            case R.id.settings:
+            /*case R.id.settings:
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-                return true;
+                return true;*/
 
 
 
@@ -707,7 +705,7 @@ public class MainActivity extends SharedMediaActivity {
                 return true;
             //endregion
 
-            case R.id.action_move:
+           /* case R.id.action_move:
                 SelectAlbumBuilder.with(getSupportFragmentManager())
                         .title(getString(R.string.move_to))
                         .onFolderSelected(new SelectAlbumBuilder.OnFolderSelected() {
@@ -715,7 +713,7 @@ public class MainActivity extends SharedMediaActivity {
                             public void folderSelected(String path) {
                                 //TODo
                                 //swipeRefreshLayout.setRefreshing(true);
-                                /*if (getAlbum().moveSelectedMedia(getApplicationContext(), path) > 0) {
+                                *//*if (getAlbum().moveSelectedMedia(getApplicationContext(), path) > 0) {
                                     if (getAlbum().getMedia().size() == 0) {
                                         //getAlbums().removeCurrentAlbum();
                                         //albumsAdapter.notifyDataSetChanged();
@@ -724,7 +722,7 @@ public class MainActivity extends SharedMediaActivity {
                                     //oldMediaAdapter.swapDataSet(getAlbum().getMedia());
                                     //finishEditMode();
                                     supportInvalidateOptionsMenu();
-                                } else requestSdCardPermissions();*/
+                                } else requestSdCardPermissions();*//*
 
                                 //swipeRefreshLayout.setRefreshing(false);
                             }}).show();
@@ -744,7 +742,7 @@ public class MainActivity extends SharedMediaActivity {
                             }
                         }).show();
 
-                return true;
+                return true;*/
 
             case R.id.rename:
                 /*final EditText editTextNewName = new EditText(getApplicationContext());
@@ -815,7 +813,7 @@ public class MainActivity extends SharedMediaActivity {
             }
         } else {
             if (!((BaseFragment) getSupportFragmentManager().findFragmentByTag("media")).onBackPressed())
-               goBackToAlbums();
+                goBackToAlbums();
         }
     }
 }
