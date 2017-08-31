@@ -30,20 +30,8 @@ public class MediaComparators {
     private static Comparator<Media> getDateComparator(){
         return (f1, f2) -> f1.getDateModified().compareTo(f2.getDateModified());
     }
-
-    private static Comparator<Media> getNameComparator() {
-        return (f1, f2) -> f1.getPath().compareTo(f2.getPath());
-    }
-
-    private static Comparator<Media> getSizeComparator() {
-        return (f1, f2) -> Long.compare(f1.getSize(), f2.getSize());
-    }
-
     private static Comparator<Media> getTypeComparator() {
         return (f1, f2) -> f1.getMimeType().compareTo(f2.getMimeType());
     }
 
-    private static Comparator<Media> getNumericComparator() {
-        return (f1, f2) -> NumericComparator.filevercmp(f1.getPath(), f2.getPath());
-    }
 }
