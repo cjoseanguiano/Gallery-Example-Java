@@ -18,9 +18,6 @@ public class Measure {
         DisplayMetrics displayMetrics = c.getResources().getDisplayMetrics();
         return Math.round(px * (displayMetrics.ydpi / DisplayMetrics.DENSITY_DEFAULT));
     }
-    public static float dpToPx(int dp, Context context) {
-        return dp * (context.getResources().getDisplayMetrics().density);
-    }
 
     public static int getStatusBarHeight(Resources r) {
         int resourceId = r.getIdentifier("status_bar_height", "dimen", "android");
@@ -66,13 +63,5 @@ public class Measure {
         Point size = new Point();
         display.getRealSize(size);
         return size;
-    }
-
-    public static int rotateBy(int current, int degrees) {
-        // TODO: 21/08/16 a better way should exist
-    /*int rotation = current + degrees;
-    if (rotation > 359) rotation -=360;
-    if (rotation < 0) rotation +=360;*/
-        return (current + degrees) % 360;
     }
 }
