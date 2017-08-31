@@ -43,19 +43,15 @@ import org.horaapps.leafpic.adapters.MediaPagerAdapter;
 import org.horaapps.leafpic.data.Album;
 import org.horaapps.leafpic.data.AlbumSettings;
 import org.horaapps.leafpic.data.Media;
-import org.horaapps.leafpic.data.MediaHelper;
 import org.horaapps.leafpic.data.StorageHelper;
 import org.horaapps.leafpic.fragments.ImageFragment;
 import org.horaapps.leafpic.util.Measure;
-import org.horaapps.leafpic.util.StringUtils;
 import org.horaapps.leafpic.views.HackyViewPager;
 
 import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -336,30 +332,6 @@ public class SingleMediaActivity extends SharedMediaActivity {
                     break;
             }
         }
-    }
-
-
-    private void displayAlbums() {
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        finish();
-    }
-
-    private void deleteCurrentMedia() {
-        Media currentMedia = getCurrentMedia();
-
-        boolean success = MediaHelper.deleteMedia(getApplicationContext(), currentMedia);
-
-        if (success) {
-            media.remove(currentMedia);
-
-            if (media.size() == 0) {
-                displayAlbums();
-            }
-        } else {
-            Toast.makeText(this, R.string.delete_error, Toast.LENGTH_SHORT).show();
-        }
-        adapter.notifyDataSetChanged();
-        updatePageTitle(mViewPager.getCurrentItem());
     }
 
     @Override

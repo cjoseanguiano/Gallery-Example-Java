@@ -1,15 +1,11 @@
 package org.horaapps.leafpic.data;
 
 import android.content.Context;
-import android.media.MediaScannerConnection;
 
 import com.orhanobut.hawk.Hawk;
 
 import org.horaapps.leafpic.data.sort.SortingMode;
 import org.horaapps.leafpic.data.sort.SortingOrder;
-
-import java.io.File;
-import java.io.FileOutputStream;
 
 
 /**
@@ -26,20 +22,4 @@ public class AlbumsHelper {
         return SortingOrder.fromValue(Hawk.get("albums_sorting_order", SortingOrder.DESCENDING.getValue()));
     }
 
-    public static void scanFile(Context context, String[] path) {  MediaScannerConnection.scanFile(context, path, null, null); }
-
-    public static void hideAlbum(String path, Context context) {
-        File dirName = new File(path);
-        File file = new File(dirName, ".nomedia");
-        if (!file.exists()) {
-            try {
-                FileOutputStream out = new FileOutputStream(file);
-                out.flush();
-                out.close();
-                scanFile(context, new String[]{ file.getAbsolutePath() });
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }
