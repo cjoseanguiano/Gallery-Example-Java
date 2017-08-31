@@ -1,3 +1,4 @@
+/*
 package org.horaapps.leafpic.views;
 
 import android.content.Context;
@@ -8,9 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.GridLayoutAnimationController;
 
+*/
 /**
  * Created by gilbert on 30/03/2017.
- */
+ *//*
+
 
 public class GridRecyclerView extends RecyclerView {
     public GridRecyclerView(Context context) {
@@ -66,3 +69,4 @@ public class GridRecyclerView extends RecyclerView {
 
 
 
+*/

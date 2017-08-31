@@ -1,3 +1,4 @@
+/*
 package org.horaapps.leafpic.views;
 
 import android.content.Context;
@@ -23,9 +24,11 @@ import horaapps.org.liz.ThemeHelper;
 import horaapps.org.liz.Themed;
 import horaapps.org.liz.ThemedActivity;
 
+*/
 /**
  * Created by darken (darken@darken.eu) on 04.03.2017.
- */
+ *//*
+
 public class SettingWithSwitchView extends FrameLayout implements View.OnClickListener, Themed {
     private final String iconString;
     private final String preferenceKey;
@@ -78,10 +81,12 @@ public class SettingWithSwitchView extends FrameLayout implements View.OnClickLi
         toggle.setChecked(isChecked());
         super.setOnClickListener(this);
 
-        /*
+        */
+/*
         setPadding((int) getResources().getDimension(R.dimen.medium_spacing), 0,(int) getResources().getDimension(R.dimen.medium_spacing), 0);
         setMinimumHeight((int) getResources().getDimension(R.dimen.listitem_height_twoline));
-        */
+        *//*
+
         super.onFinishInflate();
     }
 
@@ -120,3 +125,4 @@ public class SettingWithSwitchView extends FrameLayout implements View.OnClickLi
     }
 
 }
+*/

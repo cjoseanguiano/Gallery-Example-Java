@@ -18,7 +18,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import org.horaapps.leafpic.LookForMediaJob;
 import org.horaapps.leafpic.R;
 import org.horaapps.leafpic.activities.base.SharedMediaActivity;
 import org.horaapps.leafpic.data.Album;
@@ -92,25 +91,6 @@ public class SplashScreen extends SharedMediaActivity {
     private void start() {
         startActivity(new Intent(SplashScreen.this, MainActivity.class));
         finish();
-    }
-
-    private void startLookingForMedia() {
-
-        new Thread(() -> {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && getAlbums().getFoldersCount(HandlingAlbums.INCLUDED) > 0) {
-
-                JobInfo job = new JobInfo.Builder(0, new ComponentName(getApplicationContext(), LookForMediaJob.class))
-                        .setPeriodic(1000)
-                        .setRequiresDeviceIdle(true)
-                        .build();
-
-                JobScheduler scheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
-                if (scheduler.getAllPendingJobs().size() == 0)
-                    Log.wtf(TAG, scheduler.schedule(job) == JobScheduler.RESULT_SUCCESS
-                            ? "LookForMediaJob scheduled successfully!" : "LookForMediaJob scheduled failed!");
-
-            }
-        }).start();
     }
 
     @Override

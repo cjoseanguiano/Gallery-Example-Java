@@ -1,3 +1,4 @@
+/*
 package org.horaapps.leafpic;
 
 import android.annotation.TargetApi;
@@ -17,9 +18,11 @@ import org.horaapps.leafpic.data.filter.ImageFileFilter;
 import java.io.File;
 import java.util.ArrayList;
 
+*/
 /**
  * Created by dnld on 11/29/16.
- */
+ *//*
+
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class LookForMediaJob extends JobService {
@@ -90,3 +93,4 @@ public class LookForMediaJob extends JobService {
         return false;
     }
 }
+*/

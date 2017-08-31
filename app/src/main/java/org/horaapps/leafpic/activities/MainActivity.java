@@ -54,7 +54,6 @@ public class MainActivity extends SharedMediaActivity {
 
     AlbumsFragment albumsFragment = new AlbumsFragment();
 
-    @BindView(R.id.fab_camera) FloatingActionButton fab;
     @BindView(R.id.drawer_layout) DrawerLayout drawer;
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.coordinator_main_layout) CoordinatorLayout mainLayout;
@@ -120,11 +119,6 @@ public class MainActivity extends SharedMediaActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if (newConfig.orientation != Configuration.ORIENTATION_LANDSCAPE) {
-            fab.setVisibility(View.VISIBLE);
-            fab.animate().translationY(fab.getHeight() * 2).start();
-        } else
-            fab.setVisibility(View.GONE);
     }
 
     public void goBackToAlbums() {
@@ -156,14 +150,6 @@ public class MainActivity extends SharedMediaActivity {
             displayMedia(Album.getAllMediaAlbum());
         });
 
-        /**** FAB ***/
-        fab.setImageDrawable(new IconicsDrawable(this).icon(GoogleMaterial.Icon.gmd_camera_alt).color(Color.WHITE));
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA));
-            }
-        });
     }
 
     @Override
@@ -208,8 +194,6 @@ public class MainActivity extends SharedMediaActivity {
         setStatusBarColor();
         setNavBarColor();
 
-        fab.setBackgroundTintList(ColorStateList.valueOf(getAccentColor()));
-        fab.setVisibility(Hawk.get(getString(R.string.preference_show_fab), false) ? View.VISIBLE : View.GONE);
         mainLayout.setBackgroundColor(getBackgroundColor());
 
         setScrollViewColor(findViewById(R.id.drawer_scrollbar));
