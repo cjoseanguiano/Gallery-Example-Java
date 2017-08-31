@@ -11,16 +11,19 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package org.horaapps.leafpic.util.inapppurchase;
 
+*/
 /**
  * Exception thrown when something went wrong with in-app billing.
  * An IabException has an associated IabResult (an onError).
  * To get the IAB result that caused this exception to be thrown,
  * call {@link #getResult()}.
- */
+ *//*
+
 public class IabException extends Exception {
     IabResult mResult;
 
@@ -38,6 +41,8 @@ public class IabException extends Exception {
         this(new IabResult(response, message), cause);
     }
 
-    /** Returns the IAB result (onError) that this exception signals. */
+    */
+/** Returns the IAB result (onError) that this exception signals. *//*
+
     public IabResult getResult() { return mResult; }
-}
+}*/

@@ -11,16 +11,19 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package org.horaapps.leafpic.util.inapppurchase;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+*/
 /**
  * Represents an in-app product's listing details.
- */
+ *//*
+
 public class SkuDetails {
     private final String mItemType;
     private final String mSku;
@@ -62,3 +65,4 @@ public class SkuDetails {
         return "SkuDetails:" + mJson;
     }
 }
+*/

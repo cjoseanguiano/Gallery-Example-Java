@@ -11,10 +11,12 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package org.horaapps.leafpic.util.inapppurchase;
 
+*/
 /**
  * Represents the result of an in-app billing operation.
  * A result is composed of a response code (an integer) and possibly a
@@ -22,7 +24,8 @@ package org.horaapps.leafpic.util.inapppurchase;
  * {@link #getResponse} and {@link #getMessage()}, respectively. You
  * can also inquire whether a result is a onSuccess or a failure by
  * calling {@link #isSuccess()} and {@link #isFailure()}.
- */
+ *//*
+
 public class IabResult {
     int mResponse;
     String mMessage;
@@ -43,3 +46,4 @@ public class IabResult {
     public String toString() { return "IabResult: " + getMessage(); }
 }
 
+*/

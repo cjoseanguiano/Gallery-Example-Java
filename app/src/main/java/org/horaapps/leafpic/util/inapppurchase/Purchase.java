@@ -11,16 +11,19 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package org.horaapps.leafpic.util.inapppurchase;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+*/
 /**
  * Represents an in-app billing purchase.
- */
+ *//*
+
 public class Purchase {
     String mItemType;  // ITEM_TYPE_INAPP or ITEM_TYPE_SUBS
     String mOrderId;
@@ -64,3 +67,4 @@ public class Purchase {
     @Override
     public String toString() { return "PurchaseInfo(type:" + mItemType + "):" + mOriginalJson; }
 }
+*/

@@ -11,7 +11,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package org.horaapps.leafpic.util.inapppurchase;
 
@@ -19,6 +20,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+*/
 /**
  * Receiver for the "com.android.vending.billing.PURCHASES_UPDATED" Action
  * from the Play Store.
@@ -31,18 +33,23 @@ import android.content.Intent;
  * application is already running in the background when the item is acquired,
  * a message to this BroadcastReceiver will indicate that the an item
  * has been acquired.</p>
- */
+ *//*
+
 public class IabBroadcastReceiver extends BroadcastReceiver {
-    /**
+    */
+/**
      * Listener interface for received broadcast messages.
-     */
+     *//*
+
     public interface IabBroadcastListener {
         void receivedBroadcast();
     }
 
-    /**
+    */
+/**
      * The Intent action that this Receiver should filter for.
-     */
+     *//*
+
     public static final String ACTION = "com.android.vending.billing.PURCHASES_UPDATED";
 
     private final IabBroadcastListener mListener;
@@ -58,3 +65,4 @@ public class IabBroadcastReceiver extends BroadcastReceiver {
         }
     }
 }
+*/
