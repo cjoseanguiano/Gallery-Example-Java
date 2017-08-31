@@ -33,20 +33,6 @@ public class StringUtils {
         return a;
     }
 
-    public static String getGenericMIME(String mime) {
-        return mime.split("/")[0] + "/*";
-    }
-
-    public static String join(String jointChar, Object... collection) {
-        String s = "";
-        for (Object o : collection) s += o.toString() + jointChar;
-
-        int i = s.lastIndexOf(jointChar);
-        if (i!=-1)
-            s = s.substring(0, i);
-        return s;
-    }
-
     @SuppressWarnings("deprecation")
     public static Spanned html(String s) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
@@ -57,15 +43,6 @@ public class StringUtils {
     public static String getName(String path) {
         String b[] = path.split("/");
         return b[b.length - 1];
-    }
-
-    public static String getPhotoPathRenamed(String olderPath, String newName) {
-        String c = "", b[] = olderPath.split("/");
-        for (int x = 0; x < b.length - 1; x++) c += b[x] + "/";
-        c += newName;
-        String name = b[b.length - 1];
-        c += name.substring(name.lastIndexOf('.'));
-        return c;
     }
 
     public static String incrementFileNameSuffix(String name) {
@@ -84,46 +61,12 @@ public class StringUtils {
         return builder.toString();
     }
 
-    public static String getPhotoPathRenamedAlbumChange(String olderPath, String albumNewName) {
-        String c = "", b[] = olderPath.split("/");
-        for (int x = 0; x < b.length - 2; x++) c += b[x] + "/";
-        c += albumNewName +"/"+b[b.length - 1];
-        return c;
-    }
-
-    public static String getAlbumPathRenamed(String olderPath, String newName) {
-        return olderPath.substring(0, olderPath.lastIndexOf('/')) + "/" + newName;
-    }
-
-    public static String getPhotoPathMoved(String olderPath, String folderPath) {
-        String b[] = olderPath.split("/");
-        String fi = b[b.length - 1];
-        String path = folderPath + "/";
-        path += fi;
-        return path;
-    }
-
     public static String getBucketPathByImagePath(String path) {
         String b[] = path.split("/");
         String c = "";
         for (int x = 0; x < b.length - 1; x++) c += b[x] + "/";
         c = c.substring(0, c.length() - 1);
         return c;
-    }
-/*
-
-    public static void showToast(Context x, String s) {
-        Toast t = Toast.makeText(x, s, Toast.LENGTH_SHORT);
-        t.show();
-    }
-*/
-
-    public static String humanReadableByteCount(long bytes, boolean si) {
-        int unit = si ? 1000 : 1024;
-        if (bytes < unit) return bytes + " B";
-        int exp = (int) (Math.log(bytes) / Math.log(unit));
-        String pre = (si ? "kMGTPE" : "KMGTPE").charAt(exp - 1) + (si ? "" : "i");
-        return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
     }
 
     public static String b(String content) {
@@ -137,14 +80,6 @@ public class StringUtils {
     public static Spanned htmlFormat(String content, int color, boolean bold, boolean italic) {
         String res = content;
         if (color != -1) res = color(color, res);
-        if (bold) res = b(res);
-        if (italic) res = i(res);
-        return html(res);
-    }
-
-    public static Spanned htmlFormat(String content, @Nullable String hexcolor, boolean bold, boolean italic) {
-        String res = content;
-        if (hexcolor != null) res = color(hexcolor, res);
         if (bold) res = b(res);
         if (italic) res = i(res);
         return html(res);
