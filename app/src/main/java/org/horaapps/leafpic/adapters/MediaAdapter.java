@@ -86,11 +86,6 @@ public class MediaAdapter extends ThemedAdapter<MediaAdapter.ViewHolder> {
         return sortingOrder;
     }
 
-    public void changeSortingOrder(SortingOrder sortingOrder) {
-        this.sortingOrder = sortingOrder;
-        Collections.reverse(media);
-        notifyDataSetChanged();
-    }
 
     public SortingMode sortingMode() {
         return sortingMode;

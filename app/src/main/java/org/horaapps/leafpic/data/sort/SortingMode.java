@@ -7,11 +7,8 @@ import android.provider.MediaStore;
  */
 
 public enum SortingMode {
-  NAME (0, MediaStore.MediaColumns.DISPLAY_NAME, MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME),
   DATE (1, MediaStore.MediaColumns.DATE_MODIFIED, "max(" + MediaStore.Images.Media.DATE_MODIFIED + ")"),
-  SIZE(2, MediaStore.MediaColumns.SIZE, "count(*)"),
-  TYPE(3, MediaStore.MediaColumns.MIME_TYPE),
-  NUMERIC(4, MediaStore.MediaColumns.DISPLAY_NAME, MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME);
+  TYPE(3, MediaStore.MediaColumns.MIME_TYPE);
 
   int value;
   String mediaColumn;
@@ -43,11 +40,8 @@ public enum SortingMode {
 
   public static SortingMode fromValue(int value) {
     switch (value) {
-      case 0: return NAME;
       case 1: default: return DATE;
-      case 2: return SIZE;
       case 3: return TYPE;
-      case 4: return NUMERIC;
     }
   }
 }

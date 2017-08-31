@@ -221,11 +221,6 @@ public class Album implements CursorHandler, Parcelable {
 		settings.sortingOrder = sortingOrder.getValue();
 	}
 
-	public boolean togglePinAlbum() {
-		settings.pinned = !settings.pinned;
-		return settings.pinned;
-	}
-
 	//endregion
 
 	@Deprecated

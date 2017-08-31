@@ -69,18 +69,6 @@ public class AlbumsAdapter extends ThemedAdapter<AlbumsAdapter.ViewHolder> {
         this.sortingOrder = sortingOrder;
     }
 
-    public void sort() {
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-            albums.sort(AlbumsComparators.getComparator(sortingMode));
-            //albums = albums.stream().sorted(AlbumsComparators.getComparator(sortingMode)).collect(Collectors.toList());
-        else Collections.sort(albums, AlbumsComparators.getComparator(sortingMode));*/
-        Collections.sort(albums, AlbumsComparators.getComparator(sortingMode, sortingOrder));
-        /*if (sortingOrder.equals(SortingOrder.DESCENDING))
-            reverseOrder();*/
-
-        notifyDataSetChanged();
-    }
-
     public void notifyItemChanaged(Album album) {
         notifyItemChanged(albums.indexOf(album));
     }
@@ -89,20 +77,10 @@ public class AlbumsAdapter extends ThemedAdapter<AlbumsAdapter.ViewHolder> {
         return sortingOrder;
     }
 
-    public void changeSortingOrder(SortingOrder sortingOrder) {
-        this.sortingOrder = sortingOrder;
-        reverseOrder();
-        notifyDataSetChanged();
-    }
-
     public SortingMode sortingMode() {
         return sortingMode;
     }
 
-    public void changeSortingMode(SortingMode sortingMode) {
-        this.sortingMode = sortingMode;
-        sort();
-    }
 
     public List<Album> getSelectedAlbums() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -131,14 +109,6 @@ public class AlbumsAdapter extends ThemedAdapter<AlbumsAdapter.ViewHolder> {
 
     public int getSelectedCount() {
         return selectedCount;
-    }
-
-    public void selectAll() {
-        for (int i = 0; i < albums.size(); i++)
-            if (albums.get(i).setSelected(true))
-                notifyItemChanged(i);
-        selectedCount = albums.size();
-        onChangeSelectedSubject.onNext(Album.getEmptyAlbum());
     }
 
     public void removeSelectedAlbums(){

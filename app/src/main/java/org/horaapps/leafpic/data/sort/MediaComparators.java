@@ -18,11 +18,8 @@ public class MediaComparators {
 
     public static Comparator<Media> getComparator(SortingMode sortingMode) {
         switch (sortingMode) {
-            case NAME: return getNameComparator();
             case DATE: default: return getDateComparator();
-            case SIZE: return getSizeComparator();
             case TYPE: return getTypeComparator();
-            case NUMERIC: return getNumericComparator();
         }
     }
 

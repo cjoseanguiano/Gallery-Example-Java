@@ -13,14 +13,8 @@ public class AlbumsComparators {
 
     private static Comparator<Album> getComparator(SortingMode sortingMode, Comparator<Album> base) {
         switch (sortingMode) {
-            case NAME:
-                return getNameComparator(base);
-            case SIZE:
-                return getSizeComparator(base);
-            case DATE: default:
+           case DATE: default:
                 return getDateComparator(base);
-            case NUMERIC:
-                return getNumericComparator(base);
         }
     }
 

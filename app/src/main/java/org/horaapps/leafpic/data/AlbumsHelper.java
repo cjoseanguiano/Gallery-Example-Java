@@ -29,39 +29,39 @@ import static org.horaapps.leafpic.util.BitmapUtils.getCroppedBitmap;
 
 public class AlbumsHelper {
 
-    public static void createShortcuts(Context context, List<Album> albums) {
-        for (Album selectedAlbum : albums) {
-
-            Intent shortcutIntent;
-            shortcutIntent = new Intent(context, SplashScreen.class);
-            shortcutIntent.setAction(SplashScreen.ACTION_OPEN_ALBUM);
-            shortcutIntent.putExtra("albumPath", selectedAlbum.getPath());
-            shortcutIntent.putExtra("albumId", selectedAlbum.getId());
-            shortcutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            shortcutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-            Intent addIntent = new Intent();
-            addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
-            addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, selectedAlbum.getName());
-
-            Media coverAlbum = selectedAlbum.getCover();
-            File image = new File(coverAlbum.getPath());
-            Bitmap bitmap = coverAlbum.isVideo() ? ThumbnailUtils.createVideoThumbnail(coverAlbum.getPath(), MediaStore.Images.Thumbnails.MINI_KIND)
-                    : BitmapFactory.decodeFile(image.getAbsolutePath(), new BitmapFactory.Options());
-
-            if (bitmap == null) {
-                Toast.makeText(context, R.string.error_thumbnail, Toast.LENGTH_SHORT).show();
-                // TODO: 12/31/16
-                return;
-            }
-
-            bitmap = Bitmap.createScaledBitmap(getCroppedBitmap(bitmap), 128, 128, false);
-            addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON, addWhiteBorder(bitmap, 5));
-
-            addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
-            context.sendBroadcast(addIntent);
-        }
-    }
+//    public static void createShortcuts(Context context, List<Album> albums) {
+//        for (Album selectedAlbum : albums) {
+//
+//            Intent shortcutIntent;
+//            shortcutIntent = new Intent(context, SplashScreen.class);
+//            shortcutIntent.setAction(SplashScreen.ACTION_OPEN_ALBUM);
+//            shortcutIntent.putExtra("albumPath", selectedAlbum.getPath());
+//            shortcutIntent.putExtra("albumId", selectedAlbum.getId());
+//            shortcutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            shortcutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//
+//            Intent addIntent = new Intent();
+//            addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
+//            addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, selectedAlbum.getName());
+//
+//            Media coverAlbum = selectedAlbum.getCover();
+//            File image = new File(coverAlbum.getPath());
+//            Bitmap bitmap = coverAlbum.isVideo() ? ThumbnailUtils.createVideoThumbnail(coverAlbum.getPath(), MediaStore.Images.Thumbnails.MINI_KIND)
+//                    : BitmapFactory.decodeFile(image.getAbsolutePath(), new BitmapFactory.Options());
+//
+//            if (bitmap == null) {
+//                Toast.makeText(context, R.string.error_thumbnail, Toast.LENGTH_SHORT).show();
+//                // TODO: 12/31/16
+//                return;
+//            }
+//
+//            bitmap = Bitmap.createScaledBitmap(getCroppedBitmap(bitmap), 128, 128, false);
+//            addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON, addWhiteBorder(bitmap, 5));
+//
+//            addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+//            context.sendBroadcast(addIntent);
+//        }
+//    }
 
     public static SortingMode getSortingMode(Context context) {
         return SortingMode.fromValue(Hawk.get("albums_sorting_mode", SortingMode.DATE.getValue()));
@@ -69,14 +69,6 @@ public class AlbumsHelper {
 
     public static SortingOrder getSortingOrder(Context context) {
         return SortingOrder.fromValue(Hawk.get("albums_sorting_order", SortingOrder.DESCENDING.getValue()));
-    }
-
-    public static void setSortingMode(Context context, SortingMode sortingMode) {
-        Hawk.put("albums_sorting_mode", sortingMode.getValue());
-    }
-
-    public static void setSortingOrder(Context context, SortingOrder sortingOrder) {
-        Hawk.put("albums_sorting_order", sortingOrder.getValue());
     }
 
     public static void scanFile(Context context, String[] path) {  MediaScannerConnection.scanFile(context, path, null, null); }

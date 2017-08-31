@@ -68,17 +68,6 @@ public class HandlingAlbums extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void excludeAlbum(String path) {
-        SQLiteDatabase db = getWritableDatabase();
-        excludeAlbum(db, Album.withPath(path));
-        db.close();
-    }
-
-    private void excludeAlbum(SQLiteDatabase db, Album album) {
-        changeSatusAlbum(db, album, EXCLUDED);
-        // TODO: 3/26/17 notify
-    }
-
     public void addFolderToWhiteList(String path) {
         SQLiteDatabase db = getWritableDatabase();
         changeSatusAlbum(db, Album.withPath(path), INCLUDED);
@@ -167,12 +156,6 @@ public class HandlingAlbums extends SQLiteOpenHelper {
         boolean tracked = cur.moveToFirst() &&  cur.getInt(0) == 1;
         cur.close();
         return  tracked;
-    }
-
-    public void setPined(String path, boolean pinned) {
-        ContentValues values = new ContentValues();
-        values.put(ALBUM_PINNED, pinned ? 1 : 0);
-        setValue(path, values);
     }
 
     public void setCover(String path, String mediaPath) {

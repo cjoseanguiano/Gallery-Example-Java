@@ -258,11 +258,8 @@ public class RvMediaFragment extends BaseFragment {
 
             menu.findItem(R.id.ascending_sort_order).setChecked(sortingOrder() == SortingOrder.ASCENDING);
             switch (sortingMode()) {
-                case NAME:  menu.findItem(R.id.name_sort_mode).setChecked(true); break;
-                case SIZE:  menu.findItem(R.id.size_sort_mode).setChecked(true); break;
                 case DATE: default:
                     menu.findItem(R.id.date_taken_sort_mode).setChecked(true); break;
-                case NUMERIC:  menu.findItem(R.id.numeric_sort_mode).setChecked(true); break;
             }
         }
     }
@@ -317,48 +314,12 @@ public class RvMediaFragment extends BaseFragment {
                 adapter.clearSelected();
                 return true;
 
-            /*case R.id.action_palette:
-                Intent paletteIntent = new Intent(act, PaletteActivity.class);
-                paletteIntent.putExtra("imageUri", adapter.getFirstSelected().getUri().toString());
-                startActivity(paletteIntent);
-                return true;*/
-
             case R.id.select_all:
                 if (adapter.getSelectedCount() == adapter.getItemCount())
                     adapter.clearSelected();
                 else adapter.selectAll();
                 return true;
 
-            case R.id.name_sort_mode:
-                adapter.changeSortingMode(SortingMode.NAME);
-                AlbumsHelper.setSortingMode(getContext(), SortingMode.NAME);
-                item.setChecked(true);
-                return true;
-
-            case R.id.date_taken_sort_mode:
-                adapter.changeSortingMode(SortingMode.DATE);
-                AlbumsHelper.setSortingMode(getContext(), SortingMode.DATE);
-                item.setChecked(true);
-                return true;
-
-            case R.id.size_sort_mode:
-                adapter.changeSortingMode(SortingMode.SIZE);
-                AlbumsHelper.setSortingMode(getContext(), SortingMode.SIZE);
-                item.setChecked(true);
-                return true;
-
-            case R.id.numeric_sort_mode:
-                adapter.changeSortingMode(SortingMode.NUMERIC);
-                AlbumsHelper.setSortingMode(getContext(), SortingMode.NUMERIC);
-                item.setChecked(true);
-                return true;
-
-            case R.id.ascending_sort_order:
-                item.setChecked(!item.isChecked());
-                SortingOrder sortingOrder = SortingOrder.fromValue(item.isChecked());
-                adapter.changeSortingOrder(sortingOrder);
-                AlbumsHelper.setSortingOrder(getContext(), sortingOrder);
-                return true;
         }
 
         return super.onOptionsItemSelected(item);
