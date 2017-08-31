@@ -1,27 +1,16 @@
 package org.horaapps.leafpic.data;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
-import android.media.ThumbnailUtils;
-import android.provider.MediaStore;
-import android.widget.Toast;
 
 import com.orhanobut.hawk.Hawk;
 
-import org.horaapps.leafpic.R;
-import org.horaapps.leafpic.activities.SplashScreen;
 import org.horaapps.leafpic.data.sort.SortingMode;
 import org.horaapps.leafpic.data.sort.SortingOrder;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.List;
 
-import static org.horaapps.leafpic.util.BitmapUtils.addWhiteBorder;
-import static org.horaapps.leafpic.util.BitmapUtils.getCroppedBitmap;
 
 /**
  * Created by dnld on 3/25/17.
