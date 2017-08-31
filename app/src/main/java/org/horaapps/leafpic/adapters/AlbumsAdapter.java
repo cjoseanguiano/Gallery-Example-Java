@@ -118,7 +118,7 @@ public class AlbumsAdapter extends ThemedAdapter<AlbumsAdapter.ViewHolder> {
         selectedCount = 0;
         onChangeSelectedSubject.onNext(Album.getEmptyAlbum());
     }
-    
+
     @Override
     public void refreshTheme(ThemeHelper theme) {
         placeholder = theme.getPlaceHolder();

@@ -174,17 +174,6 @@ public class Album implements CursorHandler, Parcelable {
 	}
 	//endregion
 
-	public ArrayList<String> getParentsFolders() {
-		ArrayList<String> result = new ArrayList<>();
-
-		File f = new File(getPath());
-		while(f != null && f.canRead()) {
-			result.add(f.getPath());
-			f = f.getParentFile();
-		}
-		return result;
-	}
-
 	//region Album Properties Setters
 
 	public void setCount(int count) {
@@ -210,18 +199,6 @@ public class Album implements CursorHandler, Parcelable {
 	public void removeCoverAlbum() {
 		settings.coverPath = null;
 	}
-
-
-	public void setDefaultSortingMode(Context context, SortingMode column) {
-		settings.sortingMode = column.getValue();
-	}
-
-
-	public void setDefaultSortingAscending(Context context, SortingOrder sortingOrder) {
-		settings.sortingOrder = sortingOrder.getValue();
-	}
-
-	//endregion
 
 	@Deprecated
 	public int moveSelectedMedia(Context context, String targetDir) {
@@ -249,20 +226,6 @@ public class Album implements CursorHandler, Parcelable {
 		return -1;
 	}
 
-
-	public void sortPhotos() {
-		/*Collections.sort(media, MediaComparators.getComparator(settings.getSortingMode(), settings.getSortingOrder()));*/
-	}
-
-	public boolean copySelectedPhotos(Context context, String folderPath) {
-		/*boolean success = true;
-		for (Media media : selectedMedia)
-			if(!copyPhoto(context, media.getPath(), folderPath))
-				success = false;
-		return success;*/
-		return false;
-	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Album) {
@@ -271,61 +234,6 @@ public class Album implements CursorHandler, Parcelable {
 		return super.equals(obj);
 	}
 
-	public boolean deleteSelectedMedia(Context context) {
-		/*boolean success = true;
-		for (Media selectedMedia : this.selectedMedia) {
-			if (deleteMedia(context, selectedMedia))
-				media.remove(selectedMedia);
-			else success = false;
-		}
-		if (success) {
-			clearSelectedMedia();
-			setCount(media.size());
-		}
-		return success;*/
-		return false;
-	}
-
-	private boolean found_id_album = false;
-
-	public boolean renameAlbum(final Context context, String newName) {
-		/*found_id_album = false;
-		boolean success;
-		File dir = new File(StringUtils.getAlbumPathRenamed(getPath(), newName));
-		if (success = StorageHelper.mkdir(context, dir)) {
-			for (final Media m : media) {
-				File from = new File(m.getPath());
-				File to = new File(StringUtils.getPhotoPathRenamedAlbumChange(m.getPath(), newName));
-				if (StorageHelper.moveFile(context, from, to)) {
-					scanFile(context, new String[]{from.getAbsolutePath() });
-					scanFile(context, new String[]{ to.getAbsolutePath() }, new MediaScannerConnection.OnScanCompletedListener() {
-						@Override
-						public void onScanCompleted(String s, Uri uri) {
-							// TODO: 05/08/16 it sucks! look for a better solution!
-
-							if (!found_id_album) {
-								id = ContentProviderHelper.getAlbumId(context, s);
-								found_id_album = true;
-							}
-							Log.d(s, "onScanCompleted: "+s);
-							m.setPath(s); m.setUri(uri.toString());
-						}
-					});
-
-				} else success = false;
-			}
-		}
-		if(success) {
-			path = dir.getAbsolutePath();
-			name = newName;
-			// NOTE: the following line doesn't work
-			//id = ContentProviderHelper.getAlbumId(context, media.getValue(0).getPath());
-
-		}
-		return success;*/
-
-		return false;
-	}
 
 	@Deprecated
 
