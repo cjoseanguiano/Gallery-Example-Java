@@ -28,18 +28,7 @@
             android:label="@string/video_player"
             android:launchMode="singleInstance"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:scheme="http" />
-                <data android:scheme="https" />
-                <data android:scheme="content" />
-                <data android:scheme="asset" />
-                <data android:scheme="file" />
-                <data android:mimeType="video/*" />
-
-            </intent-filter>
         </activity>
 
         <activity
@@ -100,12 +89,6 @@
             </intent-filter>
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="image/*" />
-            </intent-filter>
-
-            <intent-filter>
                 <action android:name="com.android.camera.action.REVIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="image/*"/>
@@ -114,52 +97,8 @@
 
         </activity>
 
-        <activity
-            android:name="org.horaapps.leafpic.activities.SettingsActivity"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/settings"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.SETTING" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
 
-        <activity
-            android:name="org.horaapps.leafpic.activities.AboutActivity"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/about"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.ABOUT" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
 
-        <activity
-            android:name="org.horaapps.leafpic.activities.SecurityActivity"
-            android:configChanges="orientation|screenSize"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:label="@string/security">
-            <intent-filter>
-                <action android:name="android.intent.action.SECURITY" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name="org.horaapps.leafpic.activities.DonateActivity"
-            android:label="@string/donate"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.DONATE" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
 
         <activity
             android:name="org.horaapps.leafpic.activities.BlackWhiteListActivity"
@@ -171,20 +110,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name="org.horaapps.leafpic.activities.PaletteActivity"
-            android:label="@string/palette"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.PALETTE" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="image/*" />
-            </intent-filter>
-        </activity>
 
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
