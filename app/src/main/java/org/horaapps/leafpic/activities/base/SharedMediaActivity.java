@@ -11,7 +11,6 @@ import org.horaapps.leafpic.R;
 import org.horaapps.leafpic.data.Album;
 import org.horaapps.leafpic.data.HandlingAlbums;
 import org.horaapps.leafpic.data.StorageHelper;
-import org.horaapps.leafpic.util.AlertDialogsHelper;
 
 import horaapps.org.liz.ThemedActivity;
 
@@ -31,18 +30,6 @@ public abstract class SharedMediaActivity extends ThemedActivity {
     @Deprecated
     public Album getAlbum() {
         return ((App) getApplicationContext()).getAlbum();
-    }
-
-    public void requestSdCardPermissions() {
-        AlertDialog textDialog = AlertDialogsHelper.getTextDialog(this, R.string.sd_card_write_permission_title, R.string.sd_card_permissions_message);
-        textDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok_action).toUpperCase(), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP)
-                    startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE), REQUEST_CODE_SD_CARD_PERMISSIONS);
-            }
-        });
-        textDialog.show();
     }
 
     @Override

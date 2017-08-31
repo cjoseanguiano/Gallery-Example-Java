@@ -46,7 +46,6 @@ import org.horaapps.leafpic.data.Media;
 import org.horaapps.leafpic.data.MediaHelper;
 import org.horaapps.leafpic.data.StorageHelper;
 import org.horaapps.leafpic.fragments.ImageFragment;
-import org.horaapps.leafpic.util.AlertDialogsHelper;
 import org.horaapps.leafpic.util.Measure;
 import org.horaapps.leafpic.util.StringUtils;
 import org.horaapps.leafpic.views.HackyViewPager;
@@ -385,63 +384,6 @@ public class SingleMediaActivity extends SharedMediaActivity {
                 }
                 break;
 
-
-           /* case R.id.action_copy:
-                SelectAlbumBuilder.with(getSupportFragmentManager())
-                        .title(getString(R.string.copy_to))
-                        .onFolderSelected(path -> {
-
-                            Media currentMedia = getCurrentMedia();
-                            boolean b = MediaHelper.copyMedia(getApplicationContext(), currentMedia, path);
-                            if (!b)
-                                Toast.makeText(getApplicationContext(), R.string.copy_error, Toast.LENGTH_SHORT).show();
-                        }).show();
-                break;*/
-
-   /*         case R.id.name_sort_mode:
-                this.album.setDefaultSortingMode(getApplicationContext(), SortingMode.NAME);
-                this.album.sortPhotos();
-                adapter.swapDataSet(media);
-                item.setChecked(true);
-                return true;
-
-            case R.id.date_taken_sort_mode:
-                this.album.setDefaultSortingMode(getApplicationContext(), SortingMode.DATE);
-                this.album.sortPhotos();
-                adapter.swapDataSet(media);
-                item.setChecked(true);
-                return true;
-
-            case R.id.size_sort_mode:
-                this.album.setDefaultSortingMode(getApplicationContext(), SortingMode.SIZE);
-                this.album.sortPhotos();
-                adapter.swapDataSet(media);
-                item.setChecked(true);
-                return true;
-
-            case R.id.type_sort_action:
-                this.album.setDefaultSortingMode(getApplicationContext(), SortingMode.TYPE);
-                this.album.sortPhotos();
-                adapter.swapDataSet(media);
-                item.setChecked(true);
-                return true;
-
-            case R.id.numeric_sort_mode:
-                this.album.setDefaultSortingMode(getApplicationContext(), SortingMode.NUMERIC);
-                this.album.sortPhotos();
-                adapter.swapDataSet(media);
-                item.setChecked(true);
-                return true;
-
-            case R.id.ascending_sort_order:
-                this.album.setDefaultSortingAscending(getApplicationContext(), !item.isChecked() ? SortingOrder.ASCENDING : SortingOrder.DESCENDING);
-                this.album.sortPhotos();
-                adapter.swapDataSet(media);
-
-                item.setChecked(!item.isChecked());
-                return true;
-*/
-
             case R.id.action_share:
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType(getCurrentMedia().getMimeType());
@@ -464,7 +406,7 @@ public class SingleMediaActivity extends SharedMediaActivity {
                 startActivity(Intent.createChooser(intentopenWith, getString(R.string.open_with)));
                 break;
 
-            case R.id.action_delete:
+        /*    case R.id.action_delete:
                 final AlertDialog textDialog = AlertDialogsHelper.getTextDialog(SingleMediaActivity.this, R.string.delete, R.string.delete_photo_message);
                 textDialog.setButton(DialogInterface.BUTTON_NEGATIVE, this.getString(R.string.cancel).toUpperCase(), new DialogInterface.OnClickListener() {
                     @Override
@@ -475,7 +417,7 @@ public class SingleMediaActivity extends SharedMediaActivity {
                 textDialog.setButton(DialogInterface.BUTTON_POSITIVE, this.getString(R.string.delete).toUpperCase(), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Log.i(TAG, "onClick: ");
-                        /*if (Security.isPasswordOnDelete(getApplicationContext())) {
+                        *//*if (Security.isPasswordOnDelete(getApplicationContext())) {
 
                             Security.askPassword(SingleMediaActivity.this, new Security.PasswordInterface() {
                                 @Override
@@ -489,11 +431,11 @@ public class SingleMediaActivity extends SharedMediaActivity {
                                 }
                             });
                         } else
-                            deleteCurrentMedia();*/
+                            deleteCurrentMedia();*//*
                     }
                 });
                 textDialog.show();
-                return true;
+                return true;*/
 
        /*     case R.id.action_move:
                 SelectAlbumBuilder.with(getSupportFragmentManager())

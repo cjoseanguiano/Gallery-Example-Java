@@ -19,6 +19,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -38,7 +39,6 @@ import org.horaapps.leafpic.data.StorageHelper;
 import org.horaapps.leafpic.fragments.AlbumsFragment;
 import org.horaapps.leafpic.fragments.BaseFragment;
 import org.horaapps.leafpic.fragments.RvMediaFragment;
-import org.horaapps.leafpic.util.AlertDialogsHelper;
 import org.horaapps.leafpic.util.StringUtils;
 
 import java.util.Locale;
@@ -181,7 +181,7 @@ public class MainActivity extends SharedMediaActivity {
                             .setAction(StringUtils.html(buttonHtml), new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    AlertDialogsHelper.showChangelogDialog(MainActivity.this);
+                                    Log.i(TAG, "onClick: ");
                                 }
                             });
                     View snackbarView = snackbar.getView();
