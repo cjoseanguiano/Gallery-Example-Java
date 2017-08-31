@@ -39,7 +39,6 @@ import com.yalantis.ucrop.UCrop;
 
 import org.horaapps.leafpic.R;
 import org.horaapps.leafpic.activities.base.SharedMediaActivity;
-import org.horaapps.leafpic.adapters.MediaPagerAdapter;
 import org.horaapps.leafpic.data.Album;
 import org.horaapps.leafpic.data.AlbumSettings;
 import org.horaapps.leafpic.data.Media;
@@ -84,7 +83,6 @@ public class SingleMediaActivity extends SharedMediaActivity {
 
     private Album album;
     private ArrayList<Media> media;
-    private MediaPagerAdapter adapter;
     private boolean isSlideShowOn = false;
 
 
@@ -109,7 +107,6 @@ public class SingleMediaActivity extends SharedMediaActivity {
             mViewPager.setLocked(savedInstanceState.getBoolean(ISLOCKED_ARG, false));
         }
 
-        adapter = new MediaPagerAdapter(getSupportFragmentManager(), media);
         initUi();
     }
 
@@ -161,9 +158,7 @@ public class SingleMediaActivity extends SharedMediaActivity {
                     else hideSystemUI();
                 });
 
-        updatePageTitle(position);
 
-        mViewPager.setAdapter(adapter);
         mViewPager.setCurrentItem(position);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -174,7 +169,6 @@ public class SingleMediaActivity extends SharedMediaActivity {
             public void onPageSelected(int position) {
                 SingleMediaActivity.this.position = position;
 
-                updatePageTitle(position);
                 supportInvalidateOptionsMenu();
             }
 
@@ -247,10 +241,6 @@ public class SingleMediaActivity extends SharedMediaActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         else setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER);
 
-    }
-
-    private void updatePageTitle(int position) {
-        getSupportActionBar().setTitle((position + 1) + " " + getString(R.string.of) + " " + adapter.getCount());
     }
 
     @Override
@@ -332,155 +322,6 @@ public class SingleMediaActivity extends SharedMediaActivity {
                     break;
             }
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-
-            case R.id.rotate_180:
-                if (!((ImageFragment) adapter.getRegisteredFragment(position)).rotatePicture(180)) {
-                    Toast.makeText(this, R.string.coming_soon, Toast.LENGTH_SHORT).show();
-                }
-                break;
-
-            case R.id.rotate_right_90:
-                if (!((ImageFragment) adapter.getRegisteredFragment(position)).rotatePicture(90)) {
-                    Toast.makeText(this, R.string.coming_soon, Toast.LENGTH_SHORT).show();
-                }
-                break;
-
-            case R.id.rotate_left_90:
-                if (!((ImageFragment) adapter.getRegisteredFragment(position)).rotatePicture(-90)) {
-                    Toast.makeText(this, R.string.coming_soon, Toast.LENGTH_SHORT).show();
-                }
-                break;
-
-            case R.id.action_share:
-                Intent share = new Intent(Intent.ACTION_SEND);
-                share.setType(getCurrentMedia().getMimeType());
-                share.putExtra(Intent.EXTRA_STREAM, getCurrentMedia().getUri());
-                startActivity(Intent.createChooser(share, getString(R.string.send_to)));
-                return true;
-
-            case R.id.action_edit:
-                Uri mDestinationUri = Uri.fromFile(new File(getCacheDir(), "croppedImage.png"));
-                Uri uri = Uri.fromFile(new File(getCurrentMedia().getPath()));
-                UCrop uCrop = UCrop.of(uri, mDestinationUri);
-                uCrop.withOptions(getUcropOptions());
-                uCrop.start(SingleMediaActivity.this);
-                break;
-
-            case R.id.action_open_with:
-                Intent intentopenWith = new Intent(Intent.ACTION_VIEW);
-                intentopenWith.setDataAndType(
-                        getCurrentMedia().getUri(), getCurrentMedia().getMimeType());
-                startActivity(Intent.createChooser(intentopenWith, getString(R.string.open_with)));
-                break;
-
-        /*    case R.id.action_delete:
-                final AlertDialog textDialog = AlertDialogsHelper.getTextDialog(SingleMediaActivity.this, R.string.delete, R.string.delete_photo_message);
-                textDialog.setButton(DialogInterface.BUTTON_NEGATIVE, this.getString(R.string.cancel).toUpperCase(), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        textDialog.dismiss();
-                    }
-                });
-                textDialog.setButton(DialogInterface.BUTTON_POSITIVE, this.getString(R.string.delete).toUpperCase(), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Log.i(TAG, "onClick: ");
-                        *//*if (Security.isPasswordOnDelete(getApplicationContext())) {
-
-                            Security.askPassword(SingleMediaActivity.this, new Security.PasswordInterface() {
-                                @Override
-                                public void onSuccess() {
-                                    deleteCurrentMedia();
-                                }
-
-                                @Override
-                                public void onError() {
-                                    Toast.makeText(getApplicationContext(), R.string.wrong_password, Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        } else
-                            deleteCurrentMedia();*//*
-                    }
-                });
-                textDialog.show();
-                return true;*/
-
-       /*     case R.id.action_move:
-                SelectAlbumBuilder.with(getSupportFragmentManager())
-                        .title(getString(R.string.move_to))
-                        .exploreMode(true)
-                        .force(true)
-                        .onFolderSelected(path -> {
-
-                            Media currentMedia = getCurrentMedia();
-
-                            boolean success = MediaHelper.moveMedia(getApplicationContext(), currentMedia, path);
-
-                            if (success) {
-                                media.remove(currentMedia);
-
-                                if (media.size() == 0) {
-                                    displayAlbums();
-                                }
-                            } else {
-                                Toast.makeText(getApplicationContext(), R.string.move_error, Toast.LENGTH_SHORT).show();
-                            }
-                            adapter.notifyDataSetChanged();
-                            updatePageTitle(mViewPager.getCurrentItem());
-                        }).show();
-
-                return true;
-*/
-
-            case R.id.action_edit_with:
-                Intent editIntent = new Intent(Intent.ACTION_EDIT);
-                editIntent.setDataAndType(getCurrentMedia().getUri(), getCurrentMedia().getMimeType());
-                editIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                startActivity(Intent.createChooser(editIntent, getString(R.string.edit_with)));
-                break;
-
-/*            case R.id.action_details:
-
-                final AlertDialog detailsDialog = AlertDialogsHelper.getDetailsDialog(this, getCurrentMedia());
-
-                detailsDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string
-                        .ok_action).toUpperCase(), (dialog, which) -> dialog.dismiss());
-
-                detailsDialog.setButton(DialogInterface.BUTTON_NEUTRAL, getString(R.string.fix_date).toUpperCase(), (dialog, which) -> {
-                    // todo
-                    //if (!getCurrentMedia().fixDate())
-                    Toast.makeText(SingleMediaActivity.this, R.string.unable_to_fix_date, Toast.LENGTH_SHORT).show();
-                });
-
-                detailsDialog.show();
-                break;*/
-/*
-            case R.id.action_settings:
-                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
-                break;*/
-
-         /*   case R.id.action_palette:
-                Intent paletteIntent = new Intent(getApplicationContext(), PaletteActivity.class);
-                paletteIntent.setData(getCurrentMedia().getUri());
-                startActivity(paletteIntent);
-                break;
-*/
-            case R.id.slide_show:
-                isSlideShowOn = !isSlideShowOn;
-                if (isSlideShowOn) handler.postDelayed(slideShowRunnable, SLIDE_SHOW_INTERVAL);
-                else handler.removeCallbacks(slideShowRunnable);
-                supportInvalidateOptionsMenu();
-
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                //return super.onOptionsItemSelected(item);
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     public Media getCurrentMedia() {

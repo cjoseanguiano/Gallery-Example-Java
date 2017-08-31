@@ -28,7 +28,6 @@ import org.horaapps.leafpic.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -226,8 +225,7 @@ public class AlbumsAdapter extends ThemedAdapter<AlbumsAdapter.ViewHolder> {
     }
 
     public int add(Album album) {
-        int i = Collections.binarySearch(
-                albums, album, AlbumsComparators.getComparator(sortingMode, sortingOrder));
+        int i = Collections.binarySearch(albums, album, AlbumsComparators.getComparator(sortingMode, sortingOrder));
         if (i < 0) i = ~i;
         albums.add(i, album);
         notifyItemInserted(i);
