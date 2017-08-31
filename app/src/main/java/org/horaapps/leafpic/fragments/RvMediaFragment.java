@@ -287,12 +287,6 @@ public class RvMediaFragment extends BaseFragment {
                 display();
                 return true;
 
-            case R.id.gifs_media_filter:
-                album.setFilterMode(FilterMode.GIF);
-                item.setChecked(true);
-                display();
-                return true;
-
             case R.id.sharePhotos:
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_SEND_MULTIPLE);

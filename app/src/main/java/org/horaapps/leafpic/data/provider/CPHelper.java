@@ -8,7 +8,6 @@ import com.orhanobut.hawk.Hawk;
 import org.horaapps.leafpic.data.Album;
 import org.horaapps.leafpic.data.Media;
 import org.horaapps.leafpic.data.StorageHelper;
-import org.horaapps.leafpic.data.filter.FoldersFileFilter;
 import org.horaapps.leafpic.data.filter.ImageFileFilter;
 import org.horaapps.leafpic.data.sort.SortingMode;
 import org.horaapps.leafpic.data.sort.SortingOrder;
@@ -106,7 +105,7 @@ public class CPHelper {
 
 
     private static void fetchRecursivelyHiddenFolder(File dir, ObservableEmitter<Album> emitter, ArrayList<String> excludedAlbums, boolean includeVideo) {
-        if (!isExcluded(dir.getPath(), excludedAlbums)) {
+      /*  if (!isExcluded(dir.getPath(), excludedAlbums)) {
             File[] folders = dir.listFiles(new FoldersFileFilter());
             if (folders != null) {
                 for (File temp : folders) {
@@ -117,39 +116,9 @@ public class CPHelper {
                     fetchRecursivelyHiddenFolder( temp, emitter, excludedAlbums, includeVideo);
                 }
             }
-        }
+        }*/
     }
 
-    private static void checkAndAddFolder(File dir, ObservableEmitter<Album> emitter, boolean includeVideo) {
-        File[] files = dir.listFiles(new ImageFileFilter(includeVideo));
-        if (files != null && files.length > 0) {
-            //valid folder
-
-            long lastMod = Long.MIN_VALUE;
-            File choice = null;
-            for (File file : files) {
-                if (file.lastModified() > lastMod) {
-                    choice = file;
-                    lastMod = file.lastModified();
-                }
-            }
-            if (choice != null) {
-                Album asd = new Album(dir.getAbsolutePath(), dir.getName(), files.length, lastMod);
-                asd.setLastMedia(new Media(choice.getAbsolutePath()));
-                emitter.onNext(asd);
-            }
-
-        }
-
-    }
-
-    private static boolean isExcluded(String path, ArrayList<String> excludedAlbums) {
-        for(String s : excludedAlbums) if (path.startsWith(s)) return true;
-        return false;
-    }
-
-
-    //region Media
 
     public static Observable<Media> getMedia(Context context, Album album, SortingMode sortingMode, SortingOrder sortingOrder) {
 

@@ -119,10 +119,6 @@ public class Media implements CursorHandler, Parcelable {
         return uriString != null ? Uri.parse(uriString) : Uri.fromFile(new File(path));
     }
 
-    public String getDisplayPath() {
-        return path != null ? path : getUri().getEncodedPath();
-    }
-
     public long getSize() {
         return size;
     }

@@ -10,8 +10,6 @@ public class MediaFilter {
         switch (mode) {
             case ALL: default:
                 return media -> true;
-            case GIF:
-                return Media::isGif;
             case VIDEO:
                 return Media::isVideo;
             case IMAGES: return Media::isImage;
