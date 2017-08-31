@@ -13,7 +13,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.mikepenz.iconics.view.IconicsImageView;
 
-import org.horaapps.leafpic.activities.SingleMediaActivity;
 import org.horaapps.leafpic.data.Media;
 import org.horaapps.leafpic.data.StorageHelper;
 
@@ -72,7 +71,7 @@ public class VideoFragment extends Fragment {
                 .apply(options)
                 .into(picture);
 
-        picture.setOnClickListener(v -> ((SingleMediaActivity) getActivity()).toggleSystemUI());
+//        picture.setOnClickListener(v -> ((SingleMediaActivity) getActivity()).toggleSystemUI());
         return view;
     }
 }

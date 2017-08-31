@@ -1,3 +1,4 @@
+/*
 package org.horaapps.leafpic.activities;
 
 import android.animation.ArgbEvaluator;
@@ -56,9 +57,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import horaapps.org.liz.ColorPalette;
 
+*/
 /**
  * Created by dnld on 18/02/16.
- */
+ *//*
+
 @SuppressWarnings("ResourceAsColor")
 public class SingleMediaActivity extends SharedMediaActivity {
 
@@ -114,7 +117,8 @@ public class SingleMediaActivity extends SharedMediaActivity {
         album = new Album(uri.toString(), uri.getPath());
         album.settings = AlbumSettings.getDefaults();
 
-        /*
+        */
+/*
         String path = StorageHelper.getMediaPath(getApplicationContext(), getIntent().getData());
                 Album album = null;
 
@@ -125,7 +129,8 @@ public class SingleMediaActivity extends SharedMediaActivity {
                         album.setCurrentMedia(path);
                     }
                 }
-        */
+        *//*
+
 
         try {
             InputStream inputStream = getContentResolver().openInputStream(uri);
@@ -203,7 +208,9 @@ public class SingleMediaActivity extends SharedMediaActivity {
     @CallSuper
     public void updateUiElements() {
         super.updateUiElements();
-        /**** Theme ****/
+        */
+/**** Theme ****//*
+
         toolbar.setBackgroundColor(
                 themeOnSingleImgAct()
                         ? ColorPalette.getTransparentColor(getPrimaryColor(), getTransparency())
@@ -223,7 +230,9 @@ public class SingleMediaActivity extends SharedMediaActivity {
         ((TextView) findViewById(R.id.nothing_to_show_text_emoji_easter_egg)).setTextColor(getSubTextColor());
 
 
-        /**** SETTINGS ****/
+        */
+/**** SETTINGS ****//*
+
 
         if (Hawk.get("set_max_luminosity", false))
             updateBrightness(1.0F);
@@ -470,3 +479,4 @@ public class SingleMediaActivity extends SharedMediaActivity {
     }
 }
 
+*/

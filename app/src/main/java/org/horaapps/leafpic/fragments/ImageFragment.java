@@ -23,7 +23,6 @@ import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import org.horaapps.leafpic.R;
-import org.horaapps.leafpic.activities.SingleMediaActivity;
 import org.horaapps.leafpic.data.Media;
 
 import butterknife.BindView;
@@ -67,7 +66,6 @@ public class ImageFragment extends Fragment {
 
 
         displayMedia();
-        photoView.setOnClickListener(view -> ((SingleMediaActivity) getActivity()).toggleSystemUI());
         photoView.setMaximumScale(8.0F);
         photoView.setMediumScale(3.0F);
 

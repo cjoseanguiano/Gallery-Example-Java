@@ -17,13 +17,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
+import android.widget.Toast;
 
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.orhanobut.hawk.Hawk;
 
 import org.horaapps.leafpic.R;
 import org.horaapps.leafpic.activities.MainActivity;
-import org.horaapps.leafpic.activities.SingleMediaActivity;
 import org.horaapps.leafpic.adapters.MediaAdapter;
 import org.horaapps.leafpic.data.Album;
 import org.horaapps.leafpic.data.AlbumsHelper;
@@ -137,15 +137,7 @@ public class RvMediaFragment extends BaseFragment {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(pos -> {
-
-                    Intent intent = new Intent(getActivity(), SingleMediaActivity.class);
-                    intent.setAction(SingleMediaActivity.ACTION_OPEN_ALBUM);
-                    intent.putExtra("album", RvMediaFragment.this.album);
-                    intent.putExtra("media", adapter.getMedia());
-                    intent.putExtra("position", pos);
-
-                    getContext().startActivity(intent);
-                    //Toast.makeText(getContext(), album.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), album.toString(), Toast.LENGTH_SHORT).show();
                 });
 
         adapter.getSelectedClicks()

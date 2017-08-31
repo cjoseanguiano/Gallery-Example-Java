@@ -23,6 +23,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
@@ -72,11 +73,7 @@ public class MainActivity extends SharedMediaActivity {
                         startActivity(new Intent(Intent.ACTION_VIEW)
                                 .setDataAndType(StorageHelper.getUriForFile(getApplicationContext(), m.getFile()), m.getMimeType()));
                     } else {
-
-                        Intent intent = new Intent(MainActivity.this, SingleMediaActivity.class);
-                        intent.setAction(SingleMediaActivity.ACTION_OPEN_ALBUM);
-                        startActivity(intent);
-
+                        Toast.makeText(MainActivity.this, "VASKJ", Toast.LENGTH_SHORT).show();
                     }
                 }
             } else {
