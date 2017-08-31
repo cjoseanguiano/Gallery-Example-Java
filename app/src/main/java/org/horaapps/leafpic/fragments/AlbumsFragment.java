@@ -91,11 +91,6 @@ public class AlbumsFragment extends BaseFragment {
         updateToolbar();
     }
 
-    public void displayAlbums(boolean hidden) {
-        this.hidden = hidden;
-        displayAlbums();
-    }
-
     private void displayAlbums() {
         adapter.clear();
         SQLiteDatabase db = HandlingAlbums.getInstance(getContext()).getReadableDatabase();

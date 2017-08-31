@@ -119,12 +119,6 @@ public class MainActivity extends SharedMediaActivity {
 
     }
 
-    private void displayAlbums(boolean hidden) {
-        albumsMode = true;
-        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-        albumsFragment.displayAlbums(hidden);
-    }
-
     public void displayMedia(Album album) {
         albumsMode = false;
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
@@ -151,26 +145,6 @@ public class MainActivity extends SharedMediaActivity {
         albumsMode = true;
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         getSupportFragmentManager().popBackStack();
-    }
-
-    @Deprecated
-    private boolean displayData(Intent data){
-
-        // TODO: 3/25/17 pick porcodio
-        pickMode = data.getBooleanExtra(SplashScreen.PICK_MODE, false);
-        switch (data.getIntExtra(SplashScreen.CONTENT, SplashScreen.ALBUMS_BACKUP)) {
-
-            case SplashScreen.PHOTOS_PREFETCHED:
-                //TODO ask password if hidden
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //getAlbums().loadAlbums(getApplicationContext(), getAlbum().isHidden());
-                    }
-                }).start();
-                return true;
-        }
-        return false;
     }
 
     private void initUi() {
