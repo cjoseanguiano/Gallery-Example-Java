@@ -1,3 +1,4 @@
+/*
 package org.horaapps.leafpic.fragments;
 
 import android.content.Intent;
@@ -16,9 +17,11 @@ import com.mikepenz.iconics.view.IconicsImageView;
 import org.horaapps.leafpic.data.Media;
 import org.horaapps.leafpic.data.StorageHelper;
 
+*/
 /**
  * Created by dnld on 18/02/16.
- */
+ *//*
+
 
 public class VideoFragment extends Fragment {
 
@@ -74,4 +77,4 @@ public class VideoFragment extends Fragment {
 //        picture.setOnClickListener(v -> ((SingleMediaActivity) getActivity()).toggleSystemUI());
         return view;
     }
-}
+}*/

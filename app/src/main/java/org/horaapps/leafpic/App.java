@@ -11,7 +11,7 @@ import org.horaapps.leafpic.data.HandlingAlbums;
 /**
  * Created by dnld on 28/04/16.
  */
-public class App extends /*horaapps.org.liz.App*/ Application {
+public class App extends Application {
 
     private static App mInstance;
 
