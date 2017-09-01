@@ -1,3 +1,4 @@
+/*
 package org.horaapps.leafpic.views.themeable;
 
 import android.content.Context;
@@ -9,9 +10,11 @@ import com.mikepenz.iconics.view.IconicsImageView;
 import horaapps.org.liz.ThemeHelper;
 import horaapps.org.liz.Themed;
 
+*/
 /**
  * Created by darken (darken@darken.eu) on 04.03.2017.
- */
+ *//*
+
 public class ThemedSettingsIcon extends IconicsImageView implements Themed {
     public ThemedSettingsIcon(Context context) {
         this(context, null);
@@ -30,3 +33,4 @@ public class ThemedSettingsIcon extends IconicsImageView implements Themed {
         setColor(themeHelper.getIconColor());
     }
 }
+*/

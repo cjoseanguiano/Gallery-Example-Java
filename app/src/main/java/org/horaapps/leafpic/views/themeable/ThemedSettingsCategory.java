@@ -1,3 +1,4 @@
+/*
 package org.horaapps.leafpic.views.themeable;
 
 import android.content.Context;
@@ -7,9 +8,11 @@ import android.util.AttributeSet;
 import horaapps.org.liz.ThemeHelper;
 import horaapps.org.liz.Themed;
 
+*/
 /**
  * Created by darken (darken@darken.eu) on 04.03.2017.
- */
+ *//*
+
 public class ThemedSettingsCategory extends android.support.v7.widget.AppCompatTextView implements Themed {
     public ThemedSettingsCategory(Context context) {
         this(context, null);
@@ -28,3 +31,4 @@ public class ThemedSettingsCategory extends android.support.v7.widget.AppCompatT
         themeHelper.setTextViewColor(this, themeHelper.getAccentColor());
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package org.horaapps.leafpic.views.themeable;
 
 import android.content.Context;
@@ -8,9 +9,11 @@ import android.util.AttributeSet;
 import horaapps.org.liz.ThemeHelper;
 import horaapps.org.liz.Themed;
 
+*/
 /**
  * Created by darken (darken@darken.eu) on 04.03.2017.
- */
+ *//*
+
 public class ThemedCardView extends CardView implements Themed {
     public ThemedCardView(Context context) {
         this(context, null);
@@ -29,3 +32,4 @@ public class ThemedCardView extends CardView implements Themed {
         setCardBackgroundColor(themeHelper.getCardBackgroundColor());
     }
 }
+*/
